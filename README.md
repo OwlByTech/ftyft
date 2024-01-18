@@ -1,2 +1,2 @@
 # ftyft
-Your gift list, let them choose one
+ Create a gift list and let them choose one.
