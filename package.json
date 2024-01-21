@@ -1,0 +1,18 @@
+{
+  "name": "ftyft",
+  "version": "1.0.0",
+  "description": "Create a gift list and let them choose one.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "yarn@4.0.2",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
