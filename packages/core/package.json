@@ -7,10 +7,12 @@
     "start": "yarn build && node dist/main.js"
   },
   "dependencies": {
+    "@prisma/client": "5.8.1",
     "fastify": "^4.25.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
+    "prisma": "^5.8.1",
     "typescript": "^5.3.3"
   }
 }
