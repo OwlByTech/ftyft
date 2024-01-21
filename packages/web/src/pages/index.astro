@@ -1,16 +1,26 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const companyName = "ftyft";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={companyName}>
+  <section
+    class="w-full h-screen flex flex-col justify-center items-center bg-primary-50"
+  >
+    <div class="flex flex-col gap-5">
+      <div>
+        <h1 class="font-bold text-6xl">{companyName}</h1>
+        <p>Create a gift list, let them choose one.</p>
+      </div>
+
+      <div class="flex items-start w-full">
+        <a
+        href="/login"
+          class="bg-primary-500 p-2 rounded text-primary-50 hover:bg-primary-50 hover:border-primary-500 hover:border-2 hover:text-primary-500 duration-100 ease-in"
+          >Login</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>

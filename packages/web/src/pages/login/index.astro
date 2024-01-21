@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Login">
+  <section>
+    <div class="flex w-screen h-screen">
+      <section class="flex-1 p-3 rounded-2xl relative">
+        <img
+          class="w-full h-full object-cover rounded-2xl"
+          src="https://plus.unsplash.com/premium_photo-1661760083022-f448a7689738?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
+        <div
+          class="flex flex-col absolute top-0 w-full h-full py-10 pl-10 sm:pl-12 md:pl-100 rounded-2xl box-border"
+        >
+          <div class="flex">
+            <h2
+              class="text-lg text-primary-50 drop-shadow-[0_1.2px_1.2px_rgba(217,93,93,100)]"
+            >
+              Welcome 2
+            </h2>
+          </div>
+          <div class="flex-1"></div>
+          <div class="">
+            <h2
+              class="text-3xl sm:text-5xl text-primary-50 font-bold drop-shadow-[0_1.2px_1.2px_rgba(217,93,93,100)]"
+            >
+              Welcome
+            </h2>
+            <p
+              class="text-md text-primary-50 drop-shadow-[0_1.2px_1.2px_rgba(217,93,93,100)]"
+            >
+              You would create a list of gifts.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="flex-1 flex flex-col justify-between items-center p-3">
+        <div>
+          <img class="w-32" src="/logo.svg" />
+        </div>
+        <div class="flex flex-col gap-14">
+          <div>
+            <h1 class="font-bold text-4xl">Welcome Back</h1>
+            <p>Enter your email and password to access your account</p>
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+              <span>Email</span>
+              <input class="shadow-md p-2 rounded" placeholder="Enter email" />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <span>Password</span>
+              <input
+                type="password"
+                class="shadow-md p-2 rounded"
+                placeholder="Enter email"
+              />
+            </div>
+
+            <div class="flex justify-between">
+              <div>
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </div>
+
+              <div><a>Forgot Password</a></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-5">
+            <a
+              class="w-full bg-dark-800 p-2 rounded-lg text-primary-50 text-center font-bold text-sm shadow-md"
+              >Sign in</a
+            >
+
+            <a>
+              <div
+                class="flex items-center justify-center gap-2 w-full bg-primary-50 p-2 rounded-lg text-dark-800 text-center font-bold text-sm shadow-md"
+              >
+                <img class="w-8 h-5" src="/google.svg" />
+                <span>Sign in with Google</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="p-8">
+          <span>Don't have an account? <a class="font-bold">Sign up</a></span>
+        </div>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
