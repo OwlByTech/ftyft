@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 // TODO: Handling fetching errors
+// NOTE: Connect to astro api
 const res = await fetch("http://localhost:4321/api/version");
 console.log(res.status);
 const versionRes = await res.json();
@@ -29,9 +30,9 @@ const companyName = "ftyft";
         res.status === 200 ? (
           <div class="flex flex-col gap-2">
             <p>API Version: {versionRes.version}</p>
+            {/* Send to astro api /api/wait-list */}
             <form method="post" action="/api/wait-list">
               <input
-                id="email"
                 name="email"
                 class="shadow-md border rounded p-2"
                 type="text"
