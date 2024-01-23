@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+// TODO: Handling fetching errors
+const res = await fetch("http://localhost:4321/api/version");
+console.log(res.status);
+const versionRes = await res.json();
+console.log(versionRes);
 const companyName = "ftyft";
 ---
 
@@ -16,11 +20,32 @@ const companyName = "ftyft";
 
       <div class="flex items-start w-full">
         <a
-        href="/login"
+          href="/login"
           class="bg-primary-500 p-2 rounded text-primary-50 hover:bg-primary-50 hover:border-primary-500 hover:border-2 hover:text-primary-500 duration-100 ease-in"
           >Login</a
         >
       </div>
+      {
+        res.status === 200 ? (
+          <div class="flex flex-col gap-2">
+            <p>API Version: {versionRes.version}</p>
+            <form method="post" action="/api/wait-list">
+              <input
+                id="email"
+                name="email"
+                class="shadow-md border rounded p-2"
+                type="text"
+                placeholder="Enter your email address"
+              />
+              <button class="bg-primary-500 p-2 rounded font-bold text-primary-50">
+                Join
+              </button>
+            </form>
+          </div>
+        ) : (
+          <span>API Fetch failed</span>
+        )
+      }
     </div>
   </section>
 </BaseLayout>

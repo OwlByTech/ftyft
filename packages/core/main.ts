@@ -17,6 +17,15 @@ server.post('/api/user', async (request, reply) => {
   return user;
 });
 
+server.post("/api/wait-list", async (request, reply) => {
+  // @ts-ignore
+  console.log(request.body.email);
+});
+
+server.get("/api/version", async (request, reply) => {
+  return {version: "v0.0.1"};
+});
+
 server.get("/api/users", async (request, reply) => {
   return await prisma.user.findMany();
 });
