@@ -1,18 +1,17 @@
 import fastify from "fastify";
 
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
-
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 const server = fastify();
 
-server.post('/api/user', async (request, reply) => {
-  const { name, email } = request.body as any;
+server.post("/api/user", async (request, reply) => {
+  const { name, email, password } = request.body as any;
   const user = await prisma.user.create({
     data: {
       name: name,
       email: email,
     },
-  })
+  });
 
   return user;
 });
@@ -22,8 +21,13 @@ server.post("/api/wait-list", async (request, reply) => {
   console.log(request.body.email);
 });
 
+server.post("/api/login", async (request, reply) => {
+  // @ts-ignore
+  console.log(request.body.email, request.body.password, request.body.remember);
+});
+
 server.get("/api/version", async (request, reply) => {
-  return {version: "v0.0.1"};
+  return { version: "v0.0.1" };
 });
 
 server.get("/api/users", async (request, reply) => {
