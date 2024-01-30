@@ -1,28 +1,30 @@
 ---
 import "@fontsource-variable/league-spartan";
+import Footer from "../layouts/Footer.astro";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<style>
-		html {
-			font-family: "League Spartant Variable", "Gill Sans", "Gill Sans MT",
-				Calibri, "Trebuchet MS", sans-serif;
-		}
-	</style>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <style>
+    html {
+      font-family: "League Spartant Variable", "Gill Sans", "Gill Sans MT",
+        Calibri, "Trebuchet MS", sans-serif;
+    }
+  </style>
+  <body>
+    <slot />
+    <Footer />
+  </body>
 </html>
