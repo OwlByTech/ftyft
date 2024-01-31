@@ -14,7 +14,6 @@ export const POST: APIRoute = async ({ request }) => {
     body: JSON.stringify({
       email: data.get("email"),
       password: data.get("password"),
-      remember: data.get("remember-me"),
     }),
   });
 

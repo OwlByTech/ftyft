@@ -23,7 +23,7 @@ server.post("/api/wait-list", async (request, reply) => {
 
 server.post("/api/login", async (request, reply) => {
   // @ts-ignore
-  console.log(request.body.email, request.body.password, request.body.remember);
+  console.log(request.body.email, request.body.password);
 });
 
 server.get("/api/version", async (request, reply) => {

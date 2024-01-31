@@ -32,17 +32,6 @@ const companyName = "ftyft";
           <div class="flex flex-col gap-2">
             <p>API Version: {versionRes.version}</p>
             {/* Send to astro api /api/wait-list */}
-            <form method="post" action="/api/wait-list">
-              <input
-                name="email"
-                class="shadow-md border rounded p-2"
-                type="text"
-                placeholder="Enter your email address"
-              />
-              <button class="bg-primary-500 p-2 rounded font-bold text-primary-50">
-                Join
-              </button>
-            </form>
           </div>
         ) : (
           <span>API Fetch failed</span>
