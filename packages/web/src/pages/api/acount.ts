@@ -6,7 +6,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // NOTE: You can access to the form data using request.formData
 
-  await fetch("http://localhost:3000/api/login", {
+  await fetch("http://localhost:3000/api/acountfind", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

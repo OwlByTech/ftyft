@@ -13,5 +13,33 @@ datasource db {
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  name  String
+  password String?
+  username  String?
+  recived_emails Boolean?
+  gift Gift?
 }
+
+model Gift {
+  code Int @id @default(autoincrement())
+  user User @relation(fields: [id_user], references: [id])
+  id_user Int @unique
+  date_create DateTime @default(now())
+  date_expire DateTime
+  for_whom String
+  state State @default(CLOSE)
+  items Items?
+}
+
+model Items{
+  id Int @id @default(autoincrement())
+  gift Gift @relation(fields: [code], references: [code])
+  code Int @unique
+  url_gift String
+}
+
+enum State{
+  OPEN
+  CLOSE
+}
+
+

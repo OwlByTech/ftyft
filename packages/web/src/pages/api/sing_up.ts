@@ -6,19 +6,22 @@ export const POST: APIRoute = async ({ request }) => {
 
   // NOTE: You can access to the form data using request.formData
 
-  await fetch("http://localhost:3000/api/wait-list", {
+  await fetch("http://localhost:3000/api/sing_up", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: data.get("email"),
+      password: data.get("password"),
+      username: data.get("username"),
+      recived_emails: data.get("recived_emails"),
     }),
   });
 
   return new Response(
     JSON.stringify({
-      message: "Success!",
+      message: "Sing up!",
     }),
     { status: 200 }
   );

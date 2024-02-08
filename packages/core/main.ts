@@ -1,30 +1,61 @@
 import fastify from "fastify";
 
 import { PrismaClient } from "@prisma/client";
+import { request } from "http";
 const prisma = new PrismaClient();
 const server = fastify();
 
-server.post("/api/user", async (request, reply) => {
-  const { name, email, password } = request.body as any;
+await prisma.$connect();
+
+// api user
+server.post("/api/login", async (request, reply) => {
+  const { email, password } = request.body as any;
+  const user = await prisma.user.findFirst({
+    where: {
+      email: email,
+      password: password,
+    },
+  });
+
+  if (user) {
+    console.log("User find", user);
+  } else {
+    console.log("User don't exist");
+    console.log(user);
+    return user;
+  }
+
+  // @ts-ignore
+  console.log(request.body.email, request.body.password);
+});
+
+server.post("/api/sing", async (request, reply) => {
+  const { email, password, username, recived_emails } = request.body as any;
   const user = await prisma.user.create({
     data: {
-      name: name,
+      email: email,
+      password: password,
+      username: username,
+      recived_emails: recived_emails,
+    },
+  });
+
+  console.log(user);
+  return user;
+});
+
+server.post("api/acountfind", async (request, reply) => {
+  const { email } = request.body as any;
+  const user = await prisma.user.findFirst({
+    where: {
       email: email,
     },
   });
 
-  return user;
+  console.log(user);
 });
 
-server.post("/api/wait-list", async (request, reply) => {
-  // @ts-ignore
-  console.log(request.body.email);
-});
-
-server.post("/api/login", async (request, reply) => {
-  // @ts-ignore
-  console.log(request.body.email, request.body.password);
-});
+// standar
 
 server.get("/api/version", async (request, reply) => {
   return { version: "v0.0.1" };
