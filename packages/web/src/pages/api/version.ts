@@ -6,7 +6,9 @@ export const GET: APIRoute = async () => {
 
   let data;
   try {
-    const res = await fetch("http://localhost:3000/api/version");
+    console.log(import.meta.env);
+    console.log(import.meta.env.API_ENDPOINT);
+    const res = await fetch(`${import.meta.env.API_ENDPOINT}/api/version`);
     data = await res.json();
   } catch (e) {
     return new Response("{}", {status: 400});
