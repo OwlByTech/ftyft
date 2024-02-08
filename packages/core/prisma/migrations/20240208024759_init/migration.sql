@@ -1,14 +1,14 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE `User` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NULL,
+    `username` VARCHAR(191) NULL,
+    `recived_emails` BOOLEAN NULL,
 
-  - You are about to drop the column `name` on the `user` table. All the data in the column will be lost.
-
-*/
--- AlterTable
-ALTER TABLE `user` DROP COLUMN `name`,
-    ADD COLUMN `password` VARCHAR(191) NULL,
-    ADD COLUMN `recived_emails` BOOLEAN NULL,
-    ADD COLUMN `username` VARCHAR(191) NULL;
+    UNIQUE INDEX `User_email_key`(`email`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Gift` (

@@ -44,7 +44,7 @@ server.post("/api/sing", async (request, reply) => {
   return user;
 });
 
-server.post("api/acountfind", async (request, reply) => {
+server.post("/api/acountfind", async (request, reply) => {
   const { email } = request.body as any;
   const user = await prisma.user.findFirst({
     where: {
@@ -70,7 +70,7 @@ server.get("/", async (request, reply) => {
   reply.send("<h1> ftyft </h1>");
 });
 
-server.listen({ port: 3000 }, (err, address) => {
+server.listen({ host: "0.0.0.0",port: 3000 }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
