@@ -29,7 +29,7 @@ server.post("/api/login", async (request, reply) => {
   console.log(request.body.email, request.body.password);
 });
 
-server.post("/api/sing", async (request, reply) => {
+server.post("/api/sign", async (request, reply) => {
   const { email, password, username, recived_emails } = request.body as any;
   const user = await prisma.user.create({
     data: {
@@ -44,7 +44,7 @@ server.post("/api/sing", async (request, reply) => {
   return user;
 });
 
-server.post("/api/acountfind", async (request, reply) => {
+server.post("/api/accountfind", async (request, reply) => {
   const { email } = request.body as any;
   const user = await prisma.user.findFirst({
     where: {

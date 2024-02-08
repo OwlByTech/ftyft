@@ -6,7 +6,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // NOTE: You can access to the form data using request.formData
 
-  await fetch(`${import.meta.env.API_ENDPOINT}/api/acountfind`, {
+  await fetch(`${import.meta.env.API_ENDPOINT}/api/sign_up`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -14,12 +14,14 @@ export const POST: APIRoute = async ({ request }) => {
     body: JSON.stringify({
       email: data.get("email"),
       password: data.get("password"),
+      username: data.get("username"),
+      recived_emails: data.get("recived_emails"),
     }),
   });
 
   return new Response(
     JSON.stringify({
-      message: "Welcome!",
+      message: "Sing up!",
     }),
     { status: 200 }
   );
