@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "ignore": ["dist/**"],
+    "ext":"ts",
+    "exec":"yarn start"
+  }

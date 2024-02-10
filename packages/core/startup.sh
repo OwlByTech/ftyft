@@ -13,5 +13,5 @@ if [ $ENV = "prod" ]; then
   yarn start
 else
   echo "------------ DEVELOPMENT MODE ------------"
-  yarn start
+  yarn run dev
 fi
