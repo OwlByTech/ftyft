@@ -4,9 +4,7 @@ const res = await fetch("http://localhost:4321/api/version");
 ---
 
 <BaseLayout title="Login">
-  <header class="flex items-center px-3 py-5">
-    <img class="w-28" src="/logo.svg" />
-  </header>
+  
 
   <section
     class="flex flex-col items-center justify-center gap-5 px-5 pt-5 pb-7"
@@ -65,7 +63,7 @@ const res = await fetch("http://localhost:4321/api/version");
                   </p>
                   <p>
                     Don’t have an account?{" "}
-                    <a class="text-primary-500 font-bold" href="">
+                    <a class="text-primary-500 font-bold" href="/account">
                       Sign Up
                     </a>
                   </p>

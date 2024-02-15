@@ -29,19 +29,19 @@ server.post("/api/login", async (request, reply) => {
   console.log(request.body.email, request.body.password);
 });
 
-server.post("/api/sign", async (request, reply) => {
-  const { email, password, username, recived_emails } = request.body as any;
+server.post("/api/sign-up", async (request, reply) => {
+  const { email, password, username, retry_password, received_emails } =
+    request.body as any;
+  console.log(received_emails);
   const user = await prisma.user.create({
     data: {
       email: email,
       password: password,
       username: username,
-      recived_emails: recived_emails,
+      received_emails: received_emails == "true",
+      
     },
   });
-
-  console.log(user);
-  return user;
 });
 
 server.post("/api/accountfind", async (request, reply) => {
@@ -70,7 +70,7 @@ server.get("/", async (request, reply) => {
   reply.send("<h1> ftyft </h1>");
 });
 
-server.listen({ host: "0.0.0.0",port: 3000 }, (err, address) => {
+server.listen({ host: "0.0.0.0", port: 3000 }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
