@@ -1,5 +1,15 @@
 version: "3.8"
 services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./packages/web/dist/:/usr/share/nginx/html
+    networks:
+      app:
+        ipv4_address: 10.8.0.6
+
   web:
     build: ./packages/web
     #ports:
@@ -44,11 +54,11 @@ services:
   mysql:
     image: "mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-      MYSQL_ROOT_HOST: '${DB_HOST}'
-      MYSQL_DATABASE: '${DB_NAME}'
-      MYSQL_USER: '${DB_USER}'
-      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_HOST: "${DB_HOST}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
       MYSQL_ALLOW_EMPY_PASSWORD: "1"
     healthcheck:
       test: ["CMD", "mysqladmin", "-u${DB_USER}", "-p${DB_PASSWORD}", "ping"]
@@ -65,4 +75,3 @@ networks:
       config:
         - subnet: 10.8.0.0/16
           gateway: 10.8.0.1
-
