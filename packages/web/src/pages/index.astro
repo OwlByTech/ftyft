@@ -1,16 +1,80 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+const companyName = "ftyft";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={companyName}>
+  <section id="section1">
+    <div
+      class="md:flex md:flex-col md:min-h-screen md:justify-center md:items-center flex flex-col min-h-screen justify-center items-center"
+    >
+      <div class="p-5">
+        <div>
+          <img
+            class="p-0.5 w-36 h-16 md:w-52 md:h-20"
+            src="/logo.svg"
+            alt="ftyft"
+          />
+        </div>
+
+        <div>
+          <p class="md:text-2xl font-thin text-lg text-primary-200">
+            Create a gift list, let them choose one.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="felx justify-between space-y-52 md:space-y-64 opacity-0 transition-opacity duration-8000"
+    id="section2"
+  >
+    <div class="flex p-5">
+      <img class="w-28 h-10" src="/logo.svg" alt="ftyft" />
+    </div>
+
+    <div class="flex justify-center items-center">
+      <div class="flex flex-col space-y-4">
+        <div class="flex flex-col items-center justify-center">
+          <img class="w-1/3 h-auto animate-bounce" src="/gift-top.svg" alt="" />
+          <img class="w-1/3 h-auto" src="/gift-base.svg" alt="" />
+        </div>
+        <div>
+          <p class="md:text-2xl font-thin text-lg text-primary-200">
+            Create a gift list, let them choose one.
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <p class="md:text-4xl text-3xl font-bold text-primary-500">
+            In Development
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <a href="https://github.com/Camilo-Camargo/ftyft"
+            ><img
+              class="md:w-14 md:h-auto w-10 h-auto"
+              src="/gitHub.svg"
+              alt="git hub"
+            /></a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Función para ocultar la primera sección y mostrar la segunda después de un tiempo
+    setTimeout(function () {
+      document.getElementById("section1").classList.add("opacity-0");
+      document.getElementById("section1").classList.add("hidden");
+      document.getElementById("section2").classList.remove("hidden");
+      document.getElementById("section2").classList.add("opacity-100");
+    }, 1500); // Cambiar el valor 5000 por el tiempo en milisegundos que desees
+
+    // Impedir que la página se desplace hacia arriba
+    window.addEventListener("scroll", function () {
+      window.scrollTo(0, 0);
+    });
+  </script>
+</BaseLayout>
