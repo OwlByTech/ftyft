@@ -4,7 +4,7 @@ const companyName = "ftyft";
 ---
 
 <BaseLayout title={companyName}>
-  <section id="section1">
+  <section id="splash-screen">
     <div
       class="md:flex md:flex-col md:min-h-screen md:justify-center md:items-center flex flex-col min-h-screen justify-center items-center"
     >
@@ -27,7 +27,7 @@ const companyName = "ftyft";
   </section>
 
   <section
-    class="felx justify-between space-y-52 md:space-y-64 opacity-0 transition-opacity duration-8000"
+    class="felx justify-between space-y-52 md:space-y-64 hidden transition-opacity duration-8000"
     id="section2"
   >
     <div class="flex p-5">
@@ -66,15 +66,15 @@ const companyName = "ftyft";
   <script>
     // Función para ocultar la primera sección y mostrar la segunda después de un tiempo
     setTimeout(function () {
-      document.getElementById("section1").classList.add("opacity-0");
-      document.getElementById("section1").classList.add("hidden");
+      document.getElementById("splash-screen").classList.add("opacity-0");
+      document.getElementById("splash-screen").classList.add("hidden");
       document.getElementById("section2").classList.remove("hidden");
       document.getElementById("section2").classList.add("opacity-100");
     }, 1500); // Cambiar el valor 5000 por el tiempo en milisegundos que desees
 
     // Impedir que la página se desplace hacia arriba
-    window.addEventListener("scroll", function () {
-      window.scrollTo(0, 0);
-    });
+    // window.addEventListener("scroll", function () {
+    //   window.scrollTo(0, 0);
+    // });
   </script>
 </BaseLayout>
