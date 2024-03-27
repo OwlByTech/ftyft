@@ -2,13 +2,14 @@ import fastify from "fastify";
 
 import { PrismaClient } from "@prisma/client";
 import { request } from "http";
+import { accountfindSchema, loginSchema, signUpSchema } from "./validations.js";
 const prisma = new PrismaClient();
 const server = fastify();
 
 await prisma.$connect();
 
 // api user
-server.post("/api/login", async (request, reply) => {
+server.post("/api/login", loginSchema, async (request, reply) => {
   const { email, password } = request.body as any;
   const user = await prisma.user.findFirst({
     where: {
@@ -19,17 +20,17 @@ server.post("/api/login", async (request, reply) => {
 
   if (user) {
     console.log("User find", user);
+    return user;
   } else {
     console.log("User don't exist");
     console.log(user);
-    return user;
   }
 
   // @ts-ignore
   console.log(request.body.email, request.body.password);
 });
 
-server.post("/api/sign-up", async (request, reply) => {
+server.post("/api/sign-up", signUpSchema, async (request, reply) => {
   const { email, password, username, retry_password, received_emails } =
     request.body as any;
   console.log(received_emails);
@@ -38,13 +39,13 @@ server.post("/api/sign-up", async (request, reply) => {
       email: email,
       password: password,
       username: username,
-      received_emails: received_emails == "true",
-      
+      received_emails: received_emails == "on",
     },
   });
+  console.log(user);
 });
 
-server.post("/api/accountfind", async (request, reply) => {
+server.post("/api/accountfind", accountfindSchema, async (request, reply) => {
   const { email } = request.body as any;
   const user = await prisma.user.findFirst({
     where: {
@@ -52,7 +53,16 @@ server.post("/api/accountfind", async (request, reply) => {
     },
   });
 
-  console.log(user);
+  if (user) {
+    console.log("User find", user);
+    return user;
+  } else {
+    console.log("User don't exist");
+    console.log(user);
+  }
+
+  // @ts-ignore
+  console.log(request.body.email, request.body.password);
 });
 
 // standar
